@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PomoCare – Smart Fruit Health System · Admin Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="auth-body farmer-theme">
+    <div class="farmer-bg"></div>
+    <main class="auth-main farmer-main">
+      <div class="farmer-container">
+        <header class="farmer-header">
+          <div class="farmer-logo">
+            <span class="logo-icon">🌾</span>
+            <h1>PomoCare</h1>
+            <p class="farmer-subtitle">Smart Fruit Health System</p>
+          </div>
+          <p class="farmer-tagline">Administrative Access Portal</p>
+        </header>
+
+        <div class="farmer-card">
+          <div class="card-header">
+            <h2>🔑 Admin Credential Access</h2>
+            <p>Enter your admin token to retrieve user credentials in JSON format</p>
+          </div>
+
+          <form id="admin-form" class="farmer-form">
+            <div class="form-group">
+              <label for="token">Admin Token</label>
+              <input
+                type="text"
+                id="token"
+                name="token"
+                placeholder="Enter admin token"
+                autocomplete="off"
+                required
+              />
+              <small class="form-hint">Default token: fruit-guardian-admin</small>
+            </div>
+
+            <button type="submit" class="farmer-btn farmer-btn-primary">
+              <span>🔍 Fetch User Credentials</span>
+            </button>
+          </form>
+
+          <div class="json-container">
+            <div class="json-header">
+              <h3>User Credentials (JSON)</h3>
+              <button type="button" class="copy-btn" id="copy-json" hidden>📋 Copy</button>
+            </div>
+            <pre class="json-viewer" id="admin-json">{}</pre>
+          </div>
+
+          <div class="farmer-divider">
+            <span>Navigation</span>
+          </div>
+
+          <div class="farmer-actions">
+            <a href="{{ url_for('login_page') }}" class="farmer-btn farmer-btn-secondary">
+              <span>← Back to Login</span>
+            </a>
+            <a href="{{ url_for('register_page') }}" class="farmer-btn farmer-btn-outline">
+              <span>🌱 Create Account</span>
+            </a>
+          </div>
+        </div>
+
+        <footer class="farmer-footer">
+          <p>© 2024 PomoCare – Smart Fruit Health System</p>
+        </footer>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  </body>
+</html>
+

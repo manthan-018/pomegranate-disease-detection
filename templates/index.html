@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PomoCare – Smart Fruit Health System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="farmer-theme">
+    <div class="farmer-bg"></div>
+    <canvas id="orbital-bg"></canvas>
+    <main class="farmer-main-content">
+      <nav class="farmer-nav">
+        <div class="farmer-nav-brand">
+          <span class="logo-icon-small">🍎</span>
+          <div>
+            <p class="farmer-nav-label">Welcome, Farmer</p>
+            <p class="farmer-nav-user">{{ user.username }}</p>
+          </div>
+        </div>
+        <form id="logout-form">
+          <button type="submit" class="farmer-btn farmer-btn-outline farmer-btn-small">Log out</button>
+        </form>
+      </nav>
+      
+      <header class="farmer-hero-section">
+        <div class="farmer-hero-content">
+          <div class="farmer-hero-badge">🍎 AI-Powered Fruit Disease Detection</div>
+          <h1 class="farmer-hero-title">PomoCare</h1>
+          <p class="farmer-hero-subtitle">Smart Fruit Health System</p>
+          <p class="farmer-hero-lead">
+            Upload a fruit photo and our intelligent system will analyze it to detect diseases. 
+            Get instant predictions categorized into specific disease types for better crop management.
+          </p>
+      </header>
+
+      <div class="farmer-project-info">
+        <div class="farmer-info-card">
+          <h3 class="farmer-info-card-title">About PomoCare</h3>
+          <p class="farmer-info-text">PomoCare is an advanced AI-powered fruit health monitoring system designed to help farmers and agricultural professionals detect diseases in pomegranate fruits with precision and speed.</p>
+          <p class="farmer-info-text">Our deep learning model analyzes fruit images to identify common diseases including Alternaria, Anthracnose, Bacterial Blight, and Cercospora, providing instant diagnostic results.</p>
+          <p class="farmer-info-text">The system offers detailed disease information, management strategies, and prevention techniques to help maintain healthy crops and maximize yield quality.</p>
+          <p class="farmer-info-text">With real-time analysis and comprehensive reporting, PomoCare empowers farmers to make informed decisions and take timely action to protect their harvest.</p>
+          <p class="farmer-info-text">Simply upload a clear image of your pomegranate fruit below, and our intelligent system will provide accurate disease detection and actionable insights within seconds.</p>
+        </div>
+      </div>
+
+      <section class="farmer-scanner">
+        <form id="upload-form" class="farmer-upload-form">
+          <label for="image-input" class="farmer-dropzone" id="dropzone">
+            <input id="image-input" type="file" accept="image/*" hidden />
+            <div class="farmer-dropzone-content">
+              <div class="farmer-sparkle"></div>
+              <div class="farmer-upload-icon">🍎</div>
+              <p class="farmer-drop-title">Drop a fruit  image or click to browse</p>
+              <p class="farmer-drop-subtitle">JPEG / PNG · Max 10MB</p>
+            </div>
+            <img id="preview" alt="preview" hidden />
+          </label>
+          <button type="submit" class="farmer-btn farmer-btn-primary farmer-btn-large">
+            <span>🔬 Analyze Fruit Disease</span>
+          </button>
+        </form>
+
+        <div class="farmer-results">
+          <div class="farmer-result-card">
+            <div class="farmer-result-header">
+              <span class="farmer-result-icon">🍎</span>
+              <p class="farmer-result-label">Disease Prediction</p>
+            </div>
+            <h2 class="farmer-result-title" id="prediction">—</h2>
+            <p id="confidence" class="farmer-result-confidence">Confidence —</p>
+          </div>
+          <div class="farmer-chart-card">
+            <div class="farmer-chart-header">
+              <span class="farmer-chart-icon">📊</span>
+              <p class="farmer-chart-label">Confidence Breakdown</p>
+            </div>
+            <ul id="score-list" class="farmer-score-list"></ul>
+          </div>
+        </div>
+
+        <div class="farmer-disease-info" id="disease-info" hidden>
+          <div class="farmer-info-header">
+            <span class="farmer-info-icon">📖</span>
+            <h3 class="farmer-info-title">Disease Information</h3>
+          </div>
+          <div class="farmer-info-content" id="disease-info-content"></div>
+        </div>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
+

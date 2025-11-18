@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruit Guardian · User Authentication</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="auth-body">
+    <canvas id="orbital-bg"></canvas>
+    <main class="auth-main">
+      <header class="hero auth-hero">
+        <div>
+          <p class="eyebrow">Secure Access</p>
+          <h1>User Authentication Hub</h1>
+          <p class="lead">
+            Register growers, agronomists, and researchers with encrypted credentials.
+            Admins can fetch the roster as JSON whenever compliance requires it.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Username</span>
+            <span class="badge">Email</span>
+            <span class="badge">Password</span>
+            <span class="badge healthy">JSON Export</span>
+          </div>
+        </div>
+        <a class="ghost-link" href="{{ url_for('index') }}">← Back to Analyzer</a>
+      </header>
+
+      <section class="auth-grid">
+        <div class="panel">
+          <p class="label">Step 1</p>
+          <h2>Sign In</h2>
+          <p class="lead small">Log in with your username or email to access the analyzer.</p>
+          <form id="login-form" class="stack">
+            <label class="input-field">
+              <span>Username or Email</span>
+              <input
+                type="text"
+                name="identifier"
+                placeholder="orchard_admin / grower@example.com"
+                required
+              />
+            </label>
+            <label class="input-field password-field">
+              <span>Password</span>
+              <input type="password" name="password" placeholder="Your password" required />
+              <button type="button" class="toggle-password" aria-label="Toggle password">
+                👁
+              </button>
+            </label>
+            <button class="primary-btn">
+              <span class="btn-glow"></span>
+              <span class="btn-content">Log In</span>
+            </button>
+          </form>
+          <div class="status-card" id="login-status" hidden></div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Step 2</p>
+          <h2>Create Account</h2>
+          <p class="lead small">New here? Register once and you will be signed in automatically.</p>
+          <form id="register-form" class="stack">
+            <label class="input-field">
+              <span>Username</span>
+              <input type="text" name="username" placeholder="e.g. orchard_admin" required />
+            </label>
+            <label class="input-field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="grower@example.com" required />
+            </label>
+            <label class="input-field password-field">
+              <span>Password</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Minimum 8 characters"
+                minlength="8"
+                required
+              />
+              <button type="button" class="toggle-password" aria-label="Toggle password">
+                👁
+              </button>
+            </label>
+            <button class="primary-btn">
+              <span class="btn-glow"></span>
+              <span class="btn-content">Register User</span>
+            </button>
+          </form>
+          <div class="status-card" id="register-status" hidden></div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Admin Console</p>
+          <h2>Credential Ledger</h2>
+          <p class="lead small">
+            Provide the admin token to stream the current credential set in JSON format.
+          </p>
+          <form id="admin-form" class="stack">
+            <label class="input-field">
+              <span>Admin Token</span>
+              <input
+                type="text"
+                name="token"
+                placeholder="fruit-guardian-admin"
+                autocomplete="off"
+                required
+              />
+            </label>
+            <button class="primary-btn outline">
+              <span class="btn-content">Fetch Users</span>
+            </button>
+          </form>
+          <pre class="json-viewer" id="admin-json">{}</pre>
+        </div>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  </body>
+</html>
+

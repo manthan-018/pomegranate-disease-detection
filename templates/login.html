@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PomoCare – Smart Fruit Health System · Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="auth-body farmer-theme">
+    <div class="farmer-bg"></div>
+    <main class="auth-main farmer-main">
+      <div class="farmer-container">
+        <header class="farmer-header">
+          <div class="farmer-logo">
+            <span class="logo-icon">🍎</span>
+            <h1>PomoCare</h1>
+            <p class="farmer-subtitle">Smart Fruit Health System</p>
+          </div>
+          <p class="farmer-tagline">Empowering Growers With Early Disease Detection.</p>
+        </header>
+
+        <div class="farmer-card">
+          <div class="card-header">
+            <h2>Welcome Back, Farmer!</h2>
+            <p>Sign in to access the fruit disease analyzer</p>
+          </div>
+
+          <form id="login-form" class="farmer-form">
+            <div class="form-group">
+              <label for="identifier">Username or Email</label>
+              <input
+                type="text"
+                id="identifier"
+                name="identifier"
+                placeholder="Enter your username or email"
+                required
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  required
+                  autocomplete="current-password"
+                />
+                <button type="button" class="toggle-password" aria-label="Toggle password">
+                  👁
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="farmer-btn farmer-btn-primary">
+              <span>Sign In</span>
+            </button>
+          </form>
+
+          <div class="status-message" id="login-status" hidden></div>
+
+          <div class="farmer-divider">
+            <span>Need Access?</span>
+          </div>
+
+          <div class="farmer-actions">
+            <a href="{{ url_for('register_page') }}" class="farmer-btn farmer-btn-secondary">
+              <span>🍎 Create New Account</span>
+            </a>
+            <a href="{{ url_for('admin_page') }}" class="farmer-btn farmer-btn-outline">
+              <span>🔑 Admin Access</span>
+            </a>
+          </div>
+        </div>
+
+        <footer class="farmer-footer">
+          <p>© 2024 PomoCare – Smart Fruit Health System</p>
+        </footer>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  </body>
+</html>
+
